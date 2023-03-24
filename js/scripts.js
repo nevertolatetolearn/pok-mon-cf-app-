@@ -11,11 +11,20 @@ let pokemonList = [
 
 ];
 
-// For loop: to check the different Pokemons heights and
-//print out the correct information relating to the right conditions.
+/* For loop: to check the different Pokemons heights and
+print out the correct information relating to the right conditions.
 for (let i = 0; i < pokemonList.length; i++) {
       document.write(pokemonList[i].name + " (height: " + pokemonList[i].height + ")" + "<br>");
      if (pokemonList[i].height >= 1.7) {
       document.write("Wow, that's big!!" + "<br>");
      }
    }
+*/
+
+//Replacing loop with forEach loop
+pokemonList.forEach(function(pokemon) {
+  document.write(pokemon.name + " (height: " + pokemon.height + ")" + "<br>");
+ if (pokemon.height >= 1.7) {
+  document.write("Wow, that's big!!" + "<br>");
+ }
+});
