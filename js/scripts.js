@@ -1,3 +1,4 @@
+let pokemonRepository = (function () {
 let pokemonList = [
   {name: 'Sawk' , height: 1.4, type:['fighting','huamn-like','karate']},
   {name: 'Togepi' , height: .3, type:['fairy','no-eggs', 'normal']},
@@ -11,6 +12,21 @@ let pokemonList = [
 
 ];
 
+
+function add (pokemon) {
+  pokemonList.push(pokemon);
+}
+
+function getAll () {
+  return pokemonList;
+}
+
+return {
+  add: add,
+  getAll: getAll
+}
+})();
+
 /* For loop: to check the different Pokemons heights and
 print out the correct information relating to the right conditions.
 for (let i = 0; i < pokemonList.length; i++) {
@@ -21,10 +37,14 @@ for (let i = 0; i < pokemonList.length; i++) {
    }
 */
 
-//Replacing loop with forEach loop
+/*Replacing loop with forEach loop*/
 pokemonList.forEach(function(pokemon) {
   document.write(pokemon.name + " (height: " + pokemon.height + ")" + "<br>");
  if (pokemon.height >= 1.7) {
   document.write("Wow, that's big!!" + "<br>");
  }
+});
+
+pokemonRepository.getAll().forEach(function(pokemon) {
+  document.write(pokemon.name + pokemon.height);
 });
