@@ -38,13 +38,9 @@ for (let i = 0; i < pokemonList.length; i++) {
 */
 
 /*Replacing loop with forEach loop*/
-pokemonList.forEach(function(pokemon) {
+pokemonRepository.getAll().forEach(function(pokemon) {
   document.write(pokemon.name + " (height: " + pokemon.height + ")" + "<br>");
  if (pokemon.height >= 1.7) {
   document.write("Wow, that's big!!" + "<br>");
  }
-});
-
-pokemonRepository.getAll().forEach(function(pokemon) {
-  document.write(pokemon.name + pokemon.height);
 });
