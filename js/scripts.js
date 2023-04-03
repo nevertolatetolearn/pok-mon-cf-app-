@@ -12,7 +12,6 @@ let pokemonList = [
 
 ];
 
-
 function add (pokemon) {
   pokemonList.push(pokemon);
 }
@@ -21,26 +20,32 @@ function getAll () {
   return pokemonList;
 }
 
+function addListItem(pokemon) {
+  let pokemonListContainer = document.querySelector(".pokemon-list");
+  let listItem = document.createElement("li");
+  let button = document.createElement("button");
+  button.innerText = pokemon.name;
+  button.classList.add("pokemon-button");
+  listItem.appendChild(button);
+  pokemonListContainer.appendChild(listItem);
+  button.addEventListener('click', function (){
+    showDetails(pokemon);
+})
+}
+
+function showDetails(pokemon) {
+  console.log(pokemon.name);
+}
+
 return {
   add: add,
-  getAll: getAll
+  getAll: getAll,
+  addListItem: addListItem,
+  showDetails: showDetails
 }
 })();
 
-/* For loop: to check the different Pokemons heights and
-print out the correct information relating to the right conditions.
-for (let i = 0; i < pokemonList.length; i++) {
-      document.write(pokemonList[i].name + " (height: " + pokemonList[i].height + ")" + "<br>");
-     if (pokemonList[i].height >= 1.7) {
-      document.write("Wow, that's big!!" + "<br>");
-     }
-   }
-*/
 
-/*Replacing loop with forEach loop*/
-pokemonRepository.getAll().forEach(function(pokemon) {
-  document.write(pokemon.name + " (height: " + pokemon.height + ")" + "<br>");
- if (pokemon.height >= 1.7) {
-  document.write("Wow, that's big!!" + "<br>");
- }
+pokemonRepository.getAll().forEach(function (pokemon) {
+  pokemonRepository.addListItem(pokemon);
 });
