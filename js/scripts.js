@@ -25,9 +25,64 @@ function addListItem(pokemon) {
 
 function showDetails(pokemon) {
   loadDetails(pokemon).then(function (){
-    console.log(pokemon);
+    showModal(pokemon.name, pokemon.imageUrl, 'Height: ' + pokemon.height);
   });
 }
+
+  function showModal (title, img, text) {
+    let modalContainer = document.querySelector('#modal-container');
+
+    // Clear all existing modal content
+    modalContainer.innerHTML = '';
+
+    let modal = document.createElement('div');
+    modal.classList.add('modal');
+
+    // Add new modal content
+    let closeButtonElement = document.createElement('button');
+    closeButtonElement.classList.add('modal.close');
+    closeButtonElement.innerText = 'Close';
+    closeButtonElement.addEventListener('click', hideModal);
+
+    let titlElement = document.createElement('h1');
+    titlElement.innerText = title;
+
+    let myImage = document.createElement('img');
+    myImage.innerText = img;
+
+    let contentElement = document.createElement('p');
+    contentElement.innerText = text;
+
+
+    modal.appendChild(closeButtonElement);
+    modal.appendChild(titlElement);
+    modal.appendChild(myImage);
+    modal.appendChild()contentElement;
+    modalContainer.appendChild(modal);
+
+    modalContainer.classList.add('is-visible');
+    modalContainer.addEventListener('click', (e) => {
+      // Since this is also triggered when clicking INSIDE the modal
+      // We only want to close if the user clicks directly on the overlay
+      let target = e.target;
+      if (target === modalContainer) {
+        hideModal();
+      }
+    });
+  }
+  
+  function hideModal() {
+    let modalContainer = document.querySelector('#modal-container');
+    modalContainer.classList.remove('is-visible');
+  }
+
+  window.addEventListener('keydown', (e) => {
+    let modalContainer = document.querySelector('#modal-container');
+    if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+      hideModal();
+    }
+  });
+
 
   function loadList() {
     return fetch(apiUrl).then(function (response) {
