@@ -44,8 +44,8 @@ function showDetails(pokemon) {
     closeButtonElement.innerText = 'Close';
     closeButtonElement.addEventListener('click', hideModal);
 
-    let titlElement = document.createElement('h1');
-    titlElement.innerText = title;
+    let titleElement = document.createElement('h1');
+    titleElement.innerText = title;
 
     let myImage = document.createElement('img');
     myImage.innerText = img;
@@ -55,7 +55,7 @@ function showDetails(pokemon) {
 
 
     modal.appendChild(closeButtonElement);
-    modal.appendChild(titlElement);
+    modal.appendChild(titleElement);
     modal.appendChild(myImage);
     modal.appendChild()contentElement;
     modalContainer.appendChild(modal);
@@ -70,7 +70,7 @@ function showDetails(pokemon) {
       }
     });
   }
-  
+
   function hideModal() {
     let modalContainer = document.querySelector('#modal-container');
     modalContainer.classList.remove('is-visible');
