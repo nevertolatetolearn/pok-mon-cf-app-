@@ -28,22 +28,22 @@ let pokemonRepository = (function() {
   }
 
   function showDetails(pokemon) {
-    loadDetails(pokemon).then(function() {
+    loadDetails(pokemon).then(function () {
       showModal(pokemon);
     });
   }
 
   function showModal(pokemon) {
-    let modalBody = $(".modal-body");
+    let modalHeader = $("modal-header");
     let modalTitle = $(".modal-title");
-    let modalHeader = $(".modal-header");
+    let modalBody = $(".modal-body");
 
+    modalHeader.empty();
     modalTitle.empty();
     modalBody.empty();
 
     // Create for name in modal content
     let pokemonName = $("<h1>" + pokemon.name + "</h1>");
-
     // Create img in modal content
     let pokemonImage = $('<img class="modal-img" style="width:50%">');
     pokemonImage.attr("src", pokemon.imageUrl);
@@ -105,11 +105,10 @@ let pokemonRepository = (function() {
     add: add,
     getAll: getAll,
     addListItem: addListItem,
+    showDetails: showDetails,
     loadList: loadList,
     loadDetails: loadDetails,
-    showDetails: showDetails,
-    showModal: showModal,
-    hideModal: hideModal
+    showModal: showModal
   };
 
 })();
