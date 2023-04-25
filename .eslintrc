@@ -1,22 +1,33 @@
 {
   "env": {
-    "commonjs":true,
     "es6": true,
     "browser": true,
     "jquery": true
-  }, 
+  },
+
   "extends": [
     "eslint:recommended"
   ],
-  "plugins": [
-    "dollar-sign",
-    "jquery"
-  ],
+
+  "plugins": {
+    "dollar-sign": "error",
+    "jquery": "error"
+  },
+
   "rules": {
     "quotes": ["error", "single"],
     "dollar-sign/dollar-sign":[
       2,
       "ignoreProperties"
-    ]
+    ],
   }
 }
+
+module.exports = {
+  "globals": {
+    "window": true,
+    "document": true,
+    "fetch": true,
+    "console": true,
+  }
+};
